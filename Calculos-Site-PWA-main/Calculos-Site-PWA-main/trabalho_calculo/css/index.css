@@ -1,0 +1,53 @@
+*{
+    font-family:  Optima;
+}
+
+body{
+    background-color: rgb(214, 244, 255);
+}
+
+div#letreiro, div#cabo{
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.199);
+    background-color: rgb(212, 176, 129);
+    color: white;
+    margin: 0px auto;
+    display: block;
+    font-size: larger;
+    text-align: center;
+}
+
+div#letreiro{
+    width: fit-content;
+    height: 130px;
+    padding: 70px;
+    border-radius: 5%;
+}
+
+div#cabo{
+    height: 170px;
+    width: 60px;
+    padding: 0px;
+    border-radius: 0;
+}
+
+p{
+    color: black;
+    font-size: 55px;
+    margin: 0px auto;
+}
+input[type="submit"]{
+    background-color: white;
+    width: 80px;
+    border: 0px;
+    height: 40px;
+    margin-top: 45px;    
+    margin-left: 10px;
+}
+input[type="submit"]:hover{
+    background-color: rgb(180, 158, 98);
+    color:white
+}
+
+p:hover{
+    color: rgb(161, 161, 250);
+}
