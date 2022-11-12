@@ -13,10 +13,15 @@
             <div id="letreiro">
                 <p>Calculos Úteis</p>
                 <div id="tela" style="margin-top: 20px;">
-                    <input class="homeInput" onclick="trocarTela('primo', checarPrimo)" type="submit" value="Primo">
-                    <input class="homeInput" onclick="trocarTela('par', checarPar)" type="submit" value="Par/Impar">
-                    <input class="homeInput" onclick="trocarTela('fatorial', calcularFatorial)" type="submit" value="Fatorial">
-                    <input class="homeInput" onclick="trocarTela('Quadrado', calcularQuadrado)" type="submit" value="Quadrado">
+                    <div id="homeInput">
+                        <input onclick="trocarTela(calcPrimo)" type="submit" value="Primo">
+                        <input onclick="trocarTela(checarPar)" type="submit" value="Par/Impar">
+                        <input onclick="trocarTela(calcFatorial)" type="submit" value="Fatorial">
+                        <input onclick="trocarTela(calcQuadrado)" type="submit" value="Quadrado">
+                    </div>
+
+                    <div id="calculos"></div>
+
                 </div>
             </div>
 

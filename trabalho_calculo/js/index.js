@@ -1,78 +1,133 @@
 // variaveis "globais"
 let tela = document.getElementById('tela')
 let letreiro = document.getElementById('letreiro')
+let texto = document.getElementsByTagName('p')
 
-let telaPrincipal = document.getElementsByClassName("homeInput")
+let telaPrincipal = document.getElementById("homeInput")
 let telaAtual = telaPrincipal
 
-// funções
+let telaCriada = false
+
+// Volta para a tela Principal
 function mostrarHome(){
+    
+    texto[0].innerText = 'Calculos Úteis'
 
-    for(let v = 0; v < telaAtual.length; v++){
-        telaAtual[v].style.display = "none"
-    }
-
-    for (let i = 0; i < telaPrincipal.length; i++){
-        telaPrincipal[i].style.display = ""
-    }
+    telaAtual.style.display = "none"
+    telaPrincipal.style.display = ""
 
     telaAtual = telaPrincipal
 
+    document.getElementById('voltar').style.display = 'none'
+    document.getElementById('respostaInput').value = ''
+
 }
 
-function trocarTela(className, inputFunction){
-
-    // Esconde elementos da tela anterior
-    for (let i = 0; i < telaAtual.length; i++){
-        telaPrincipal[i].style.display = "none"
-    }
-
-    // Cria elementos que aparecem na placa
-    let inputNumero = document.createElement('input')
-    let enviar = document.createElement('input')
-    let voltar = document.createElement('img')
-
-    // Atribui elementos a div
-    letreiro.appendChild(voltar)
-    tela.appendChild(inputNumero)
-    tela.appendChild(enviar)
-
-
-    // botão de voltar
-    voltar.src = "img/left_arrow.png"
-    voltar.id = "voltar"
-    voltar.className = className
-    voltar.onclick = mostrarHome
-
-    // input de numero
-    inputNumero.type = "number"
-    inputNumero.placeholder = "Colocar Número"
-    inputNumero.className = className
-
-    //input para enviar
-    enviar.type = "submit"
-    enviar.value = "Checar"
-    enviar.style.display = "block"
-    enviar.className = className
-    enviar.onclick = inputFunction
+// Troca para a tela de Calculo
+function trocarTela(buttonFunction){
 
     // Atualiza a variável telaAtual
-    telaAtual = document.getElementsByClassName(className)
+    telaAtual = document.getElementById('calculos')
+
+    // Esconde elementos da tela anterior
+    telaPrincipal.style.display = 'none'
+
+    // Cria ou mostra elementos
+    if (telaCriada == false){
+        criarTela()
+        telaCriada = true
+    }else{
+        document.getElementById('voltar').style.display = ''
+        telaAtual.style.display = ''
+    }
+
+    // Define o calculo que será realizado
+    document.getElementById('enviar').onclick = buttonFunction
 
 }
 
-function checarPrimo(){
-    window.alert("funcionando")
+// Checa se um numero é primo ou não
+function calcPrimo(){
+
+    let resposta = Number(document.getElementById('respostaInput').value)
+    let divisores = 0
+
+    for (let cont = 1; cont <= resposta; cont++){
+        if (resposta % cont == 0)
+            divisores++
+    }
+
+    if (divisores == 2)
+        texto[0].innerText = 'É Primo!'
+    else
+        texto[0].innerText = 'Não é primo'
+
 }
 
+// Checa se um número é par ou não
 function checarPar(){
-    window.alert('numero par')
+
+    // Esconde elementos da tela anterior
+    telaPrincipal.style.display = 'none'
+
 }
 
-function calcularFatorial(){
+// Calcula o fatorial de um número
+function calcFatorial(){
+    
+    let inputValue = Number(document.getElementById('input0').value)
+    let input = document.getElementById('input0')
+
+    for(let i = inputValue - 1; i >= 1; i--){
+        inputValue *= i
+    }
+
+    texto[0].innerText = `O Fatorial de ${input.value} é ${inputValue}`
+    input.value = '';
 
 }
 
-function calcularQuadrado(){
+// Mostra o qudrados dos números de um intervalo
+function calcQuadrado(){
 
+    let input1 = Number(document.getElementById('input0').value)
+    let input2 = Number(document.getElementById('input1').value)
+
+    
+
+}
+
+function criarTela(){
+
+        // Cria elementos que aparecem na placa
+        let inputNumero = document.createElement('input')
+        let enviar = document.createElement('input')
+        let voltar = document.createElement('img')
+    
+        // Atribui elementos a div
+        let div = document.getElementById('calculos')
+        letreiro.appendChild(voltar)
+        div.appendChild(inputNumero)
+        div.appendChild(enviar)
+    
+        // botão de voltar
+        voltar.src = "img/left_arrow.png"
+        voltar.id = "voltar"
+        voltar.onclick = mostrarHome
+    
+        // input de numero
+        inputNumero.type = "number"
+        inputNumero.placeholder = "Colocar Número"
+        inputNumero.id = 'respostaInput'
+    
+        //input para enviar
+        enviar.type = "submit"
+        enviar.value = "Checar"
+        enviar.style.display = "block"
+        enviar.id = 'enviar'
+
+}
+
+function mudarTexto(){
+    texto[0].innerText = 'Calculos Úteis'
 }
