@@ -23,7 +23,7 @@ function mostrarHome(){
 
 }
 
-// Troca para a tela de Calculo
+// Troca para a tela de Cálculo
 function trocarTela(buttonFunction){
 
     // Atualiza a variável telaAtual
@@ -44,6 +44,42 @@ function trocarTela(buttonFunction){
     // Define o calculo que será realizado
     document.getElementById('enviar').onclick = buttonFunction
 
+}
+
+// Cria os elementos da tela de Cálculo
+function criarTela(){
+
+    // Cria elementos que aparecem na placa
+    let inputNumero = document.createElement('input')
+    let enviar = document.createElement('input')
+    let voltar = document.createElement('img')
+
+    // Atribui elementos a div
+    let div = document.getElementById('calculos')
+    letreiro.appendChild(voltar)
+    div.appendChild(inputNumero)
+    div.appendChild(enviar)
+
+    // botão de voltar
+    voltar.src = "img/left_arrow.png"
+    voltar.id = "voltar"
+    voltar.onclick = mostrarHome
+
+    // input de numero
+    inputNumero.type = "number"
+    inputNumero.placeholder = "Colocar Número"
+    inputNumero.id = 'respostaInput'
+
+    //input para enviar
+    enviar.type = "submit"
+    enviar.value = "Checar"
+    enviar.style.display = "block"
+    enviar.id = 'enviar'
+
+}
+
+function mudarTexto(){
+    texto[0].innerText = 'Calculos Úteis'
 }
 
 // Checa se um numero é primo ou não
@@ -67,23 +103,24 @@ function calcPrimo(){
 // Checa se um número é par ou não
 function checarPar(){
 
-    // Esconde elementos da tela anterior
-    telaPrincipal.style.display = 'none'
-
+    let resposta = Number(document.getElementById('respostaInput').value)
+    if (resposta % 2 == 0)
+        texto[0].innerText = 'É par!'
+    else
+        texto[0].innerText = 'É Ímpar!'
 }
 
 // Calcula o fatorial de um número
 function calcFatorial(){
     
-    let inputValue = Number(document.getElementById('input0').value)
-    let input = document.getElementById('input0')
+    let input = document.getElementById('respostaInput')
+    let inputValue = Number(document.getElementById('respostaInput').value)
 
     for(let i = inputValue - 1; i >= 1; i--){
         inputValue *= i
     }
 
     texto[0].innerText = `O Fatorial de ${input.value} é ${inputValue}`
-    input.value = '';
 
 }
 
@@ -95,39 +132,4 @@ function calcQuadrado(){
 
     
 
-}
-
-function criarTela(){
-
-        // Cria elementos que aparecem na placa
-        let inputNumero = document.createElement('input')
-        let enviar = document.createElement('input')
-        let voltar = document.createElement('img')
-    
-        // Atribui elementos a div
-        let div = document.getElementById('calculos')
-        letreiro.appendChild(voltar)
-        div.appendChild(inputNumero)
-        div.appendChild(enviar)
-    
-        // botão de voltar
-        voltar.src = "img/left_arrow.png"
-        voltar.id = "voltar"
-        voltar.onclick = mostrarHome
-    
-        // input de numero
-        inputNumero.type = "number"
-        inputNumero.placeholder = "Colocar Número"
-        inputNumero.id = 'respostaInput'
-    
-        //input para enviar
-        enviar.type = "submit"
-        enviar.value = "Checar"
-        enviar.style.display = "block"
-        enviar.id = 'enviar'
-
-}
-
-function mudarTexto(){
-    texto[0].innerText = 'Calculos Úteis'
 }
