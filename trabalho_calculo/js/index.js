@@ -12,6 +12,7 @@ let telaCriada = false
 function mostrarHome(){
     
     texto[0].innerText = 'Calculos Úteis'
+    texto[0].style.fontSize = ''
 
     telaAtual.style.display = "none"
     telaPrincipal.style.display = ""
@@ -39,6 +40,18 @@ function trocarTela(buttonFunction){
     }else{
         document.getElementById('voltar').style.display = ''
         telaAtual.style.display = ''
+    }
+
+    if(buttonFunction == calcQuadrado){
+
+        let secondInput = document.getElementById('respostaInput2')
+        document.getElementById('respostaInput').placeholder = 'Fim do Período'
+
+        secondInput.style.display = ''
+        secondInput.placeholder = 'Inicio do Periodo'
+
+    }else{
+        document.getElementById('secondInput').style.display = 'none'
     }
 
     // Define o calculo que será realizado
@@ -124,12 +137,23 @@ function calcFatorial(){
 
 }
 
-// Mostra o qudrados dos números de um intervalo
+// Mostra o quadrados dos números de um intervalo
 function calcQuadrado(){
 
-    let input1 = Number(document.getElementById('input0').value)
-    let input2 = Number(document.getElementById('input1').value)
+    let input1 = Number(document.getElementById('respostaInput2').value)
+    let input2 = Number(document.getElementById('respostaInput').value)
+    let output = ''
 
-    
+    for(let i = input1; i <= input2; i++){
+
+        let quadrado = i * i
+
+        let quadradoString = quadrado.toString()
+        output = output.concat(`${i}² = ${quadradoString} <br>`)
+
+    }
+
+    texto[0].style.fontSize = 'medium'
+    texto[0].innerHTML = output
 
 }
