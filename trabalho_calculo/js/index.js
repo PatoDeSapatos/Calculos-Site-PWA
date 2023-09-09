@@ -51,7 +51,7 @@ function trocarTela(buttonFunction){
         secondInput.placeholder = 'Inicio do Periodo'
 
     }else{
-        document.getElementById('secondInput').style.display = 'none'
+        document.getElementById('respostaInput2').style.display = 'none'
     }
 
     // Define o calculo que será realizado
